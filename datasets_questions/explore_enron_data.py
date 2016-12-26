@@ -29,7 +29,7 @@ count_poi=0
 for k in enron_data:
     if enron_data[k]["poi"]==1:
         count_poi +=1   
-        
+
 print "POIs in the E+F dataset: ", count_poi
 
 i=0
