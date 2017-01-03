@@ -34,7 +34,7 @@ def Draw(pred, features, poi, mark_poi=False, name="image.png", f1_name="feature
     plt.xlabel(f1_name)
     plt.ylabel(f2_name)
     plt.savefig(name)
-    plt.show()
+    #plt.show()
 
 
 
@@ -63,10 +63,16 @@ for f1, f2, f3 in finance_features:
     plt.scatter( f1, f2, f3 )
 plt.show()
 
+#feature scaling
+from sklearn.preprocessing import MinMaxScaler
+import numpy as np
+wghts=np.array(finance_features)
+scaler=MinMaxScaler()
+finance_features=scaler.fit_transform(wghts)
 ### cluster here; create predictions of the cluster labels
 ### for the data and store them to a list called pred
 from sklearn.cluster import KMeans
-pred=kmeans=KMeans(n_clusters=2).fit_predict(finance_features)
+pred=KMeans(n_clusters=2).fit_predict(finance_features)
 
 ### rename the "name" parameter when you change the number of features
 ### so that the figure gets saved to a different file
